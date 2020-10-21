@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+	<script type="text/javascript">
+
+		function save(){
+			let saveInfo = {};
+			saveInfo.a = a.value;
+			saveInfo.b = b.value;
+			saveInfo.c = c.value;
+		
+			if (d.checked){
+				saveInfo.d = true;
+			} else {
+				saveInfo.d = false;
+			}
+
+			if (e.checked){
+				saveInfo.e = true;
+			} else {
+				saveInfo.e = false;
+			}
+			
+			xhrRequestToServer("PUT", "https://arduinotest-bc543.firebaseio.com/1.json",saveInfo);
+
+
+		}
+
+    	function xhrRequestToServer(method, url, json) {    
+		    let xhr = new XMLHttpRequest();
+		    xhr.open(method, url);
+		    xhr.send(JSON.stringify(json));
+		}
+
+  	</script>
+
+	<br>
+	<input id="a" type="range" min="0" max="100" step="1" value="50">
+
+	<br>
+	<input id="b" type="number" size="3" min="0" max="100" value="50">
+
+	<br>
+	<input id="c" type="number" size="3" min="0" max="100" value="50">
+
+	<br>
+	<input id="d" type="checkbox">
+
+	<br>
+	<input id="e" type="checkbox">
+
+	<br>
+	<button onclick="save()">Save</button>
+
+</body>
+
+</html>
