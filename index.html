@@ -10,9 +10,9 @@
 
 		function save(){
 			let saveInfo = {};
-			saveInfo.a = a.value;
-			saveInfo.b = b.value;
-			saveInfo.c = c.value;
+			saveInfo.a = Number(a.value);
+			saveInfo.b = Number(b.value);
+			saveInfo.c = Number(c.value);
 		
 			if (d.checked){
 				saveInfo.d = true;
