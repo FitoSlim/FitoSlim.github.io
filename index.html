@@ -21,6 +21,12 @@
 			saveInfo.HumDelay = Number(HumDelay.value);
 			saveInfo.HumOn = Number(HumOnHour.value) * 60 + Number(HumOnMinute.value);
 			saveInfo.HumOff = Number(HumOffHour.value) * 60 + Number(HumOffMinute.value);
+			saveInfo.Pump1Launch = Number(Pump1Launch.value);
+			saveInfo.Pump1Delay = Number(Pump1Delay.value);
+			saveInfo.Pump2Launch = Number(Pump2Launch.value);
+			saveInfo.Pump2Delay = Number(Pump2Delay.value);
+			saveInfo.Pump3Launch = Number(Pump3Launch.value);
+			saveInfo.Pump3Delay = Number(Pump3Delay.value);
 			xhrRequestToServer("PUT", "https://arduinotest-bc543.firebaseio.com/1.json",saveInfo);
 		}
 
