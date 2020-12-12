@@ -4,31 +4,24 @@
     <meta charset="UTF-8">
 </head>
 
-<body>
+<body style="text-align: center;">
 
 	<script type="text/javascript">
 
 		function save(){
 			let saveInfo = {};
-			saveInfo.a = Number(a.value);
-			saveInfo.b = Number(b.value);
-			saveInfo.c = Number(c.value);
-		
-			if (d.checked){
-				saveInfo.d = true;
-			} else {
-				saveInfo.d = false;
-			}
-
-			if (e.checked){
-				saveInfo.e = true;
-			} else {
-				saveInfo.e = false;
-			}
-			
+			saveInfo.repeatTime = Number(repeatTime.value);
+			saveInfo.lightOn = Number(lightOnHour.value) * 60 + Number(lightOnMinute.value);
+			saveInfo.lightOff = Number(lightOffHour.value) * 60 + Number(lightOffMinute.value);
+			saveInfo.CO2Launch = Number(CO2Launch.value);
+			saveInfo.CO2Delay = Number(CO2Delay.value);
+			saveInfo.CO2On = Number(CO2OnHour.value) * 60 + Number(CO2OnMinute.value);
+			saveInfo.CO2Off = Number(CO2OffHour.value) * 60 + Number(CO2OffMinute.value);
+			saveInfo.HumLaunch = Number(HumLaunch.value);
+			saveInfo.HumDelay = Number(HumDelay.value);
+			saveInfo.HumOn = Number(HumOnHour.value) * 60 + Number(HumOnMinute.value);
+			saveInfo.HumOff = Number(HumOffHour.value) * 60 + Number(HumOffMinute.value);
 			xhrRequestToServer("PUT", "https://arduinotest-bc543.firebaseio.com/1.json",saveInfo);
-
-
 		}
 
     	function xhrRequestToServer(method, url, json) {    
@@ -39,23 +32,110 @@
 
   	</script>
 
-	<br>
-	<input id="a" type="range" min="0" max="100" step="1" value="50">
 
-	<br>
-	<input id="b" type="number" size="3" min="0" max="100" value="50">
 
-	<br>
-	<input id="c" type="number" size="3" min="0" max="100" value="50">
+  	<div style="width: 300px;  height: 450px; position: absolute; right: 50%; text-align: left;">
+		
+  		repeat time (0 - 999 sec)
+		<br>
+		<input id="repeatTime" type="number" size="3" min="0" max="999" value="300">
+		<br>
 
-	<br>
-	<input id="d" type="checkbox">
+		light ON (0 - 23h, 0 - 59min)
+		<br>
+		<input id="lightOnHour" type="number" size="2" min="0" max="23" value="22">
+		<input id="lightOnMinute" type="number" size="2" min="0" max="59" value="10">
+		<br>
+		light OFF (0 - 23h, 0 - 59min)
+		<br>
+		<input id="lightOffHour" type="number" size="2" min="0" max="23" value="22">
+		<input id="lightOffMinute" type="number" size="2" min="0" max="59" value="20">
+		<br>
 
-	<br>
-	<input id="e" type="checkbox">
+		CO2 launch (0 - 60 sec)
+		<br>
+		<input id="CO2Launch" type="number" size="2" min="0" max="60" value="3">
+		<br>
+		CO2 delay (0 - 60 min)
+		<br>
+		<input id="CO2Delay" type="number" size="2" min="0" max="60" value="30">
+		<br>
 
-	<br>
-	<button onclick="save()">Save</button>
+		CO2 on (0 - 23h, 0 - 59min)
+		<br>
+		<input id="CO2OnHour" type="number" size="2" min="0" max="23" value="22">
+		<input id="CO2OnMinute" type="number" size="2" min="0" max="59" value="10">
+		<br>
+		CO2 off (0 - 23h, 0 - 59min)
+		<br>
+		<input id="CO2OffHour" type="number" size="2" min="0" max="23" value="22">
+		<input id="CO2OffMinute" type="number" size="2" min="0" max="59" value="20">
+		<br>
+
+		hum launch (0 - 60 sec)
+		<br>
+		<input id="HumLaunch" type="number" size="2" min="0" max="60" value="5">
+		<br>
+		hum delay (0 - 60 min)
+		<br>
+		<input id="HumDelay" type="number" size="2" min="0" max="60" value="15">
+		<br>
+
+		hum on (0 - 23h, 0 - 59min)
+		<br>
+		<input id="HumOnHour" type="number" size="2" min="0" max="23" value="22">
+		<input id="HumOnMinute" type="number" size="2" min="0" max="59" value="10">
+		<br>
+		hum off (0 - 23h, 0 - 59min)
+		<br>
+		<input id="HumOffHour" type="number" size="2" min="0" max="23" value="22">
+		<input id="HumOffMinute" type="number" size="2" min="0" max="59" value="20">
+		<br>
+
+  	</div>
+  	
+
+
+
+
+
+
+  	<div style="width: 300px; height: 450px; position: absolute; left: 50%; text-align: left;">
+  		
+  		pump1 launch (0 - 999 sec)
+		<br>
+		<input id="Pump1Launch" type="number" size="2" min="0" max="999" value="300">
+		<br>
+		pump1 delay (0 - 60 min)
+		<br>
+		<input id="Pump1Delay" type="number" size="2" min="0" max="720" value="60">
+		<br>
+		<br>
+
+		pump2 launch (0 - 999 sec)
+		<br>
+		<input id="Pump2Launch" type="number" size="2" min="0" max="999" value="300">
+		<br>
+		pump2 delay (0 - 60 min)
+		<br>
+		<input id="Pump2Delay" type="number" size="2" min="0" max="720" value="60">
+		<br>
+		<br>
+
+		pump3 launch (0 - 999 sec)
+		<br>
+		<input id="Pump3Launch" type="number" size="2" min="0" max="999" value="300">
+		<br>
+		pump3 delay (0 - 60 min)
+		<br>
+		<input id="Pump3Delay" type="number" size="2" min="0" max="720" value="60">
+		<br>
+
+  	</div>
+
+
+  	<button onclick="save()" style="margin-top: 450px;">Save</button>
+	
 
 </body>
 
