@@ -27,7 +27,7 @@
 			saveInfo.Pump2Delay = Number(Pump2Delay.value);
 			saveInfo.Pump3Launch = Number(Pump3Launch.value);
 			saveInfo.Pump3Delay = Number(Pump3Delay.value);
-			xhrRequestToServer("PUT", "https://arduinotest-bc543.firebaseio.com/1.json",saveInfo);
+			xhrRequestToServer("PUT", "https://fitoslim-c232c-default-rtdb.firebaseio.com/v0.json",saveInfo);
 		}
 
     	function xhrRequestToServer(method, url, json) {    
